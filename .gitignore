@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# vtt file
+*.vtt
+
+# txt file
+*.txt
