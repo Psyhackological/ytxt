@@ -1,37 +1,54 @@
 import yt_dlp
 import argparse
 import re
+import glob
 
+# Documentation: https://docs.python.org/3/library/argparse.html
+# Tutorial:      https://docs.python.org/3/howto/argparse.html#
 parser = argparse.ArgumentParser(prog="YouTube Video to TXT")
-parser.add_argument(nargs='?', type=str, help="YouTube Video URL (str)", dest="url")
+parser.add_argument(nargs='*', type=str, help="YouTube Video URL (str)", dest="urls")
+parser.add_argument('-l', "--language", type=list, help="subtitles languages (default=['en']) (list)", dest="languages", default=["en", "en-GB"])
+parser.add_argument('-f', "--format", nargs='?', type=str, help="subtitles format (default='vtt') (str)", dest="format", default="vtt")
+parser.add_argument('-sl', "--sub-langs", action="store_true", help="prints all available subtitles languages", dest="print_langs")
 args = parser.parse_args()
 
-args.url = r"https://www.youtube.com/watch?v=Pj-h6MEgE7I"
+args.urls = [r"https://youtu.be/F1Hq8eVOMHs"]
 
-
-# https://github.com/yt-dlp/yt-dlp/blob/master/yt_dlp/YoutubeDL.py#L180
-def download_vtt_file():
+# ydl_opts: https://github.com/yt-dlp/yt-dlp/blob/master/yt_dlp/YoutubeDL.py#L180
+def show_subs_langs():
     ydl_opts = {  # YT-DLP OPTIONS
-        'subtitlesformat': "vtt",
-        'writesubtitles': True,
-        'skip_download': True
+        'listsubtitles': True,
+        'skip_download': True,
     }
 
-    with yt_dlp.YoutubeDL(ydl_opts) as ydl:  # SPECIAL YT-DLP OBJECT WITH YDL_OPTS (OPTIONS)
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
         try:
-            result = ydl.extract_info(args.url, download=True)  # WE WANT INFO WITHOUT DOWNLOADING THE VIDEO
-            subtitles_langs = result["subtitles"]
-            video_title = result["title"]
-            video_id = result["id"]
+            for url in args.urls:
+                ydl.extract_info(url, download=False)
+        except yt_dlp.utils.DownloadError:
+            quit()
 
-            return subtitles_langs, video_title, video_id
-        except yt_dlp.utils.DownloadError:  # SILLY YOU, THAT IS NOT A VALID
+
+def download_vtt_file():
+    ydl_opts = {  # YT-DLP OPTIONS
+        'skip_download': True,
+        'writesubtitles': True,
+        'subtitleslangs': args.languages,
+        'subtitlesformat': args.format
+    }
+
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        try:
+            error_code = ydl.download(args.urls)
+
+        except yt_dlp.utils.DownloadError:
             quit()
 
 
 class SubtitleTXT:
-    def __init__(self):
-        with open(f"{vid_title} [{vid_id}].en.vtt", 'rt') as vtt_file:
+    def __init__(self, filename):
+        with open(f"{filename}", 'rt') as vtt_file:
+            self.filename = filename
             self.file_text = vtt_file.read()
 
     def delete_not_needed_stuff(self):
@@ -46,7 +63,8 @@ class SubtitleTXT:
         self.file_text = re.sub(regex, ' ', self.file_text)
 
     def delete_timestamps(self):
-        regex = r"\d{2}:\d{2}:\d{2}\.\d{3} --> \d{2}:\d{2}:\d{2}\.\d{3}.*"
+        # regex = r"\d{2}:\d{2}:\d{2}\.\d{3} --> \d{2}:\d{2}:\d{2}\.\d{3}.*"
+        regex = r"\d{2}:\d{2}:\d{2}(,|\.){1}\d{3} .+ \d{2}:\d{2}:\d{2}(,|\.){1}\d{3}"
         self.file_text = re.sub(regex, '', self.file_text)
 
     def make_file(self):
@@ -60,6 +78,11 @@ class SubtitleTXT:
         self.make_file()
 
 
-subs_langs, vid_title, vid_id = download_vtt_file()
-SubTxt = SubtitleTXT()
-SubTxt.clean_to_txt()
+if args.print_langs is False:
+    download_vtt_file()
+    vtt_files = glob.glob("*.vtt")
+    for vtt_file in vtt_files:
+        SubTxt = SubtitleTXT(vtt_file)
+        SubTxt.clean_to_txt()
+else:
+    show_subs_langs()
