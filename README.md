@@ -1,5 +1,6 @@
 # ytxt
 ![ytxt_logo](img/ytxt_logo.svg)
+
 Repo to convert video's subtitles into plain text.
 
 ## TODO
