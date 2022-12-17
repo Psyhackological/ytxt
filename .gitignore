@@ -133,3 +133,6 @@ dmypy.json
 
 # txt file
 *.txt
+
+# .directory file
+.directory
