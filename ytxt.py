@@ -69,7 +69,7 @@ def download_vtt_file():
             sys.exit()
 
 
-class SubtitleTXT:
+class SubtitleTxt:
     def __init__(self, vtt_file_name):
         with open(f"{vtt_file_name}", "rt", encoding="utf-8") as vtt_file_handle:
             self.filename = Path(vtt_file_name).stem
@@ -92,7 +92,7 @@ class SubtitleTXT:
         self.file_text = re.sub(regex, "", self.file_text)
 
     def make_file(self):
-        with open("clean.txt", "wt", encoding="utf-8") as clean_txt:
+        with open(f"{self.filename}.txt", "wt", encoding="utf-8") as clean_txt:
             clean_txt.write(self.file_text)
 
     def clean_to_txt(self):
@@ -113,11 +113,16 @@ class SubtitleTXT:
         print(f"Finished saving {self.filename}.txt")
 
 
-if args.print_langs is False:
-    download_vtt_file()
-    vtt_files_list = glob.glob("*.vtt")
-    for vtt_file in vtt_files_list:
-        SubTxt = SubtitleTXT(vtt_file)
-        SubTxt.clean_to_txt()
-else:
-    show_subs_langs()
+def main():
+    if args.print_langs is False:
+        download_vtt_file()
+        vtt_files_list = glob.glob("*.vtt")
+        for vtt_file in vtt_files_list:
+            sub_txt = SubtitleTxt(vtt_file)
+            sub_txt.clean_to_txt()
+    else:
+        show_subs_langs()
+
+
+if __name__ == "__main__":
+    main()
