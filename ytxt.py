@@ -2,6 +2,7 @@ import yt_dlp
 import argparse
 import re
 import glob
+from pathlib import Path
 
 # Documentation: https://docs.python.org/3/library/argparse.html
 # Tutorial:      https://docs.python.org/3/howto/argparse.html#
@@ -46,9 +47,9 @@ def download_vtt_file():
 
 
 class SubtitleTXT:
-    def __init__(self, filename):
-        with open(f"{filename}", 'rt') as vtt_file:
-            self.filename = filename
+    def __init__(self, vtt_file_name):
+        with open(f"{vtt_file_name}", 'rt') as vtt_file:
+            self.filename = Path(vtt_file_name).stem
             self.file_text = vtt_file.read()
 
     def delete_not_needed_stuff(self):
@@ -72,10 +73,21 @@ class SubtitleTXT:
             clean_txt.write(self.file_text)
 
     def clean_to_txt(self):
+        print("Deleting subtitles heading...")
         self.delete_not_needed_stuff()
+        print("Done. 1/3")
+
+        print("Deleting subtitles timestamps...")
         self.delete_timestamps()
+        print("Done. 2/3")
+
+        print("Deleting subtitles newlines...")
         self.delete_newlines()
+        print("Done. 3/3")
+
+        print("Creating the txt file...")
         self.make_file()
+        print(f"Finished saving {self.filename}.txt")
 
 
 if args.print_langs is False:
