@@ -1,3 +1,12 @@
+"""
+ytxt module
+(YouTube text)
+
+This module downloads subtitles in .vtt file format
+then it opens it as a regular .txt file
+removes not needed stuff and in the end
+it saves to a clean looking .txt file with the same name.
+"""
 import argparse
 import re
 import glob
@@ -13,7 +22,7 @@ parser.add_argument(nargs="*", type=str, help="YouTube Video URL (str)", dest="u
 parser.add_argument(
     "-l",
     "--language",
-    type=list,
+    type=list[str],
     help="subtitles languages (default=['en']) (list)",
     dest="languages",
     default=["en", "en-GB"],
@@ -40,7 +49,8 @@ args.urls = [r"https://youtu.be/F1Hq8eVOMHs"]
 
 # ydl_opts: https://github.com/yt-dlp/yt-dlp/blob/master/yt_dlp/YoutubeDL.py#L180
 def show_subs_langs():
-    ydl_opts = {  # YT-DLP OPTIONS
+    """Shows all of the available subtitles to choose."""
+    ydl_opts = {
         "listsubtitles": True,
         "skip_download": True,
     }
@@ -54,7 +64,8 @@ def show_subs_langs():
 
 
 def download_vtt_file():
-    ydl_opts = {  # YT-DLP OPTIONS
+    """Downlads the .vtt file with chosen subtitles languages."""
+    ydl_opts = {
         "skip_download": True,
         "writesubtitles": True,
         "subtitleslangs": args.languages,
@@ -70,12 +81,15 @@ def download_vtt_file():
 
 
 class SubtitleTxt:
-    def __init__(self, vtt_file_name):
+    """SubtitleTxt class that reads .vtt file and saves it to clean .txt file."""
+
+    def __init__(self, vtt_file_name: str):
         with open(f"{vtt_file_name}", "rt", encoding="utf-8") as vtt_file_handle:
             self.filename = Path(vtt_file_name).stem
             self.file_text = vtt_file_handle.read()
 
     def delete_not_needed_stuff(self):
+        """Deletes heading stuff and saves it to a self.file_text"""
         # regex = r"^00:00:\d{2}\.\d{3} --> 00:00:\d{2}\.\d{3}.*"
         regex = r"\d{2}:\d{2}:\d{2}\.\d{3} --> .+"
         match = re.search(regex, self.file_text)
@@ -83,19 +97,23 @@ class SubtitleTxt:
             self.file_text = self.file_text[match.start() :]
 
     def delete_newlines(self):
+        """Deletes any kind of newlines and saves it to a self.file_text."""
         regex = r"(\n|&nbsp;|\u200B)+"
         self.file_text = re.sub(regex, " ", self.file_text)
 
     def delete_timestamps(self):
+        """Deleted any of the timestamps and saves it to a self.file_text."""
         # regex = r"\d{2}:\d{2}:\d{2}\.\d{3} --> \d{2}:\d{2}:\d{2}\.\d{3}.*"
         regex = r"\d{2}:\d{2}:\d{2}(,|\.){1}\d{3} .+ \d{2}:\d{2}:\d{2}(,|\.){1}\d{3}"
         self.file_text = re.sub(regex, "", self.file_text)
 
     def make_file(self):
+        """Creates the .txt file with the same basename as .vtt file."""
         with open(f"{self.filename}.txt", "wt", encoding="utf-8") as clean_txt:
             clean_txt.write(self.file_text)
 
     def clean_to_txt(self):
+        """Class method wrapper to make cleaning procces explicit and easier to use."""
         print("Deleting subtitles heading...")
         self.delete_not_needed_stuff()
         print("Done. 1/3")
@@ -114,6 +132,7 @@ class SubtitleTxt:
 
 
 def main():
+    """Main function to make explicit script execution flow."""
     if args.print_langs is False:
         download_vtt_file()
         vtt_files_list = glob.glob("*.vtt")
