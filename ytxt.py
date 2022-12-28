@@ -111,6 +111,11 @@ class SubtitleTxt:
         regex = r"(^\s|\s$)"
         self.file_text = re.sub(regex, "", self.file_text)
 
+    def delete_double_or_more_whitespace(self):
+        """Deletes double or more whitespace and saves it to a self.file_text"""
+        regex = r"\s{2,}"
+        self.file_text = re.sub(regex, "", self.file_text)
+
     def make_file(self):
         """Creates the .txt file with the same basename as .vtt file."""
         with open(f"{self.filename}.txt", "wt", encoding="utf-8") as clean_txt:
@@ -120,19 +125,23 @@ class SubtitleTxt:
         """Class method wrapper to make cleaning procces explicit and easier to use."""
         print("Deleting subtitles heading...")
         self.delete_not_needed_stuff()
-        print("Done. 1/4")
+        print("Done 1/5")
 
         print("Deleting subtitles timestamps...")
         self.delete_timestamps()
-        print("Done. 2/4")
+        print("Done 2/5")
 
         print("Deleting subtitles newlines...")
         self.delete_newlines()
-        print("Done. 3/4")
+        print("Done 3/5")
 
         print("Deleting start and end spaces...")
         self.delete_start_and_end_spaces()
-        print("Done. 4/4")
+        print("Done 4/5")
+
+        print("Deleting double or more whitespace...")
+        self.delete_double_or_more_whitespace()
+        print("Done. 5/5")
 
         print("Creating the txt file...")
         self.make_file()
