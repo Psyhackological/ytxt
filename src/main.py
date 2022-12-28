@@ -8,11 +8,6 @@ removes not needed stuff and in the end
 it saves to a clean looking .txt file with the same name.
 """
 import glob
-import sys
-
-sys.path.append("./ytxt")
-sys.path.append("./src/ytxt")
-
 from ytxt import argument_parsing, subtitle_cleaning, yt_dlp_stuff
 
 

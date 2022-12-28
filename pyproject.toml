@@ -5,6 +5,7 @@ description = "This module downloads subtitles in .vtt file format then it opens
 authors = ["Psyhackological <konradkon@duck.com>"]
 license = "GPL-3.0"
 readme = "README.md"
+packages = [{include = "ytxt", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
