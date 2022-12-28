@@ -2,6 +2,7 @@ import sys
 import yt_dlp
 from argument_parsing import args
 
+
 # ydl_opts: https://github.com/yt-dlp/yt-dlp/blob/master/yt_dlp/YoutubeDL.py#L180
 def show_subs_langs():
     """Shows all of the available subtitles to choose."""

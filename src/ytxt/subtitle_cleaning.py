@@ -1,6 +1,7 @@
 import re
 from pathlib import Path
 
+
 class SubtitleTxt:
     """SubtitleTxt class that reads .vtt file and saves it to clean .txt file."""
 

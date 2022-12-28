@@ -8,11 +8,13 @@ removes not needed stuff and in the end
 it saves to a clean looking .txt file with the same name.
 """
 import sys
+
 sys.path.append("./ytxt")
 sys.path.append("./src/ytxt")
 
 import glob
 from ytxt import argument_parsing, subtitle_cleaning, yt_dlp_stuff
+
 
 def main():
     """Main function to make explicit script execution flow."""
@@ -24,6 +26,7 @@ def main():
             sub_txt.clean_to_txt()
     else:
         yt_dlp_stuff.show_subs_langs()
+
 
 if __name__ == "__main__":
     main()
