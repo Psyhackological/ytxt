@@ -90,7 +90,6 @@ class SubtitleTxt:
 
     def delete_not_needed_stuff(self):
         """Deletes heading stuff and saves it to a self.file_text"""
-        # regex = r"^00:00:\d{2}\.\d{3} --> 00:00:\d{2}\.\d{3}.*"
         regex = r"\d{2}:\d{2}:\d{2}\.\d{3} --> .+"
         match = re.search(regex, self.file_text)
         if match is not None:
@@ -102,9 +101,14 @@ class SubtitleTxt:
         self.file_text = re.sub(regex, " ", self.file_text)
 
     def delete_timestamps(self):
-        """Deleted any of the timestamps and saves it to a self.file_text."""
+        """Deletes any of the timestamps and saves it to a self.file_text."""
         # regex = r"\d{2}:\d{2}:\d{2}\.\d{3} --> \d{2}:\d{2}:\d{2}\.\d{3}.*"
         regex = r"\d{2}:\d{2}:\d{2}(,|\.){1}\d{3} .+ \d{2}:\d{2}:\d{2}(,|\.){1}\d{3}"
+        self.file_text = re.sub(regex, "", self.file_text)
+
+    def delete_start_and_end_spaces(self):
+        """Deletes any of the start or end spaces and saves it to a self.file_text"""
+        regex = r"(^\s|\s$)"
         self.file_text = re.sub(regex, "", self.file_text)
 
     def make_file(self):
@@ -116,15 +120,19 @@ class SubtitleTxt:
         """Class method wrapper to make cleaning procces explicit and easier to use."""
         print("Deleting subtitles heading...")
         self.delete_not_needed_stuff()
-        print("Done. 1/3")
+        print("Done. 1/4")
 
         print("Deleting subtitles timestamps...")
         self.delete_timestamps()
-        print("Done. 2/3")
+        print("Done. 2/4")
 
         print("Deleting subtitles newlines...")
         self.delete_newlines()
-        print("Done. 3/3")
+        print("Done. 3/4")
+
+        print("Deleting start and end spaces...")
+        self.delete_start_and_end_spaces()
+        print("Done. 4/4")
 
         print("Creating the txt file...")
         self.make_file()
