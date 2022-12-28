@@ -106,8 +106,8 @@ class SubtitleTxt:
         regex = r"\d{2}:\d{2}:\d{2}(,|\.){1}\d{3} .+ \d{2}:\d{2}:\d{2}(,|\.){1}\d{3}"
         self.file_text = re.sub(regex, "", self.file_text)
 
-    def delete_start_and_end_spaces(self):
-        """Deletes any of the start or end spaces and saves it to a self.file_text"""
+    def delete_start_and_end_whitespace(self):
+        """Deletes any of the start or end whitespace and saves it to a self.file_text"""
         regex = r"(^\s|\s$)"
         self.file_text = re.sub(regex, "", self.file_text)
 
@@ -135,8 +135,8 @@ class SubtitleTxt:
         self.delete_newlines()
         print("Done 3/5")
 
-        print("Deleting start and end spaces...")
-        self.delete_start_and_end_spaces()
+        print("Deleting start and end whitespace...")
+        self.delete_start_and_end_whitespace()
         print("Done 4/5")
 
         print("Deleting double or more whitespace...")
