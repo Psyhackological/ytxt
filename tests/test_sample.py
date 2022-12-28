@@ -1,11 +1,10 @@
-# content of test_sample.py
-def func(x):
+def add_one(x):
     return x + 1
 
 
-def test_fails():
-    assert func(3) == 5
+def test_that_fails():
+    assert add_one(3) == 5
 
 
-def test_passes():
-    assert func(4) == 5
+def test_that_passes():
+    assert add_one(4) == 5
