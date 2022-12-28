@@ -1,3 +1,9 @@
+"""
+yt_dlp_stuff module
+
+This module shows all of the available subtitles
+languages or downloads specified subtitle.
+"""
 import sys
 import yt_dlp
 from argument_parsing import args

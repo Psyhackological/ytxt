@@ -1,3 +1,10 @@
+"""
+argument_parsing module
+
+In this module all of the magic happens when
+you pass the arguments to main script.
+"""
+
 import argparse
 
 # Documentation: https://docs.python.org/3/library/argparse.html

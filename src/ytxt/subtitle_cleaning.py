@@ -1,3 +1,17 @@
+"""
+subtitle_cleaning module
+
+This module iterate through all of the .vtt files and cleans them to
+a more readable formats. It accomplishes it with main wrapper method called
+'clean_to_txt'. This method uses 5 other methods:
+    1. delete_not_needed_stuff
+    2. delete_newlines
+    3. delete_start_and_end_whitespace
+    4. delete_start_and_end_whitespace
+    5. delete_double_or_more_whitespace
+As a result it produces a .txt file.
+"""
+
 import re
 from pathlib import Path
 
