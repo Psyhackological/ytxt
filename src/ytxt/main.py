@@ -8,7 +8,7 @@ removes not needed stuff and in the end
 it saves to a clean looking .txt file with the same name.
 """
 import glob
-from ytxt import argument_parsing, subtitle_cleaning, yt_dlp_stuff
+from lib import argument_parsing, subtitle_cleaning, yt_dlp_stuff
 
 
 def main():
