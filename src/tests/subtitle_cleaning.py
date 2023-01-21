@@ -36,8 +36,11 @@ def test_delete_newlines():
 
 
 def test_delete_timestamps():
-    """Tests whether the delete_timestamps() method removes
-    timestamps from the .vtt file."""
+    """Test delete_timestamps method of SubtitleTxt class
+    This method should be able to remove timestamps in the format
+    'HH:MM:SS,mmm --> HH:MM:SS,mmm' or 'HH:MM:SS.mmm --> HH:MM:SS.mmm'
+    from the file_text attribute of SubtitleTxt class instances.
+    """
     for vtt_file in vtt_files_list:
         sub_txt = SubtitleTxt(vtt_file)
         sub_txt.delete_timestamps()
@@ -49,11 +52,6 @@ def test_delete_timestamps():
 
 
 def test_delete_start_and_end_whitespace():
-    """Test delete_timestamps method of SubtitleTxt class
-    This method should be able to remove timestamps in the format
-    'HH:MM:SS,mmm --> HH:MM:SS,mmm' or 'HH:MM:SS.mmm --> HH:MM:SS.mmm'
-    from the file_text attribute of SubtitleTxt class instances.
-    """
     for vtt_file in vtt_files_list:
         sub_txt = SubtitleTxt(vtt_file)
         sub_txt.delete_start_and_end_whitespace()

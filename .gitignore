@@ -138,4 +138,4 @@ dmypy.json
 .directory
 
 # txt tests files
-!src/tests/*.txt
+!src/tests/*.vtt
