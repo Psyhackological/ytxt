@@ -26,12 +26,12 @@ def show_subs_langs():
 
 
 def download_vtt_file():
-    """Downlads the .vtt file with chosen subtitles languages."""
+    """Downloads the .vtt file with chosen subtitles languages."""
     ydl_opts = {
         "skip_download": True,
         "writesubtitles": True,
         "subtitleslangs": args.languages,
-        "subtitlesformat": args.format,
+        "subtitlesformat": "vtt",
     }
 
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
