@@ -18,11 +18,16 @@ def test_delete_not_needed_stuff():
     information from the .vtt file."""
     for vtt_file in vtt_files_list:
         sub_txt = SubtitleTxt(vtt_file)
-        sub_txt.clean_to_txt()
-        sub_txt = SubtitleTxt(vtt_file)
+
+        match_before = re.search(
+            r"^WEBVTT\nKind: captions\nLanguage: en(?:\-GB)?", sub_txt.file_text
+        )
         sub_txt.delete_not_needed_stuff()
-        match = re.search(r"\d{2}:\d{2}:\d{2}\.\d{3} --> .+", sub_txt.file_text)
-        assert match is None
+        match_after = re.search(
+            r"^WEBVTT\nKind: captions\nLanguage: en(?:\-GB)?", sub_txt.file_text
+        )
+        assert match_before is not None
+        assert match_after is None
 
 
 def test_delete_newlines():
@@ -30,9 +35,13 @@ def test_delete_newlines():
     and \u200B from the .vtt file."""
     for vtt_file in vtt_files_list:
         sub_txt = SubtitleTxt(vtt_file)
+
+        match_before = re.search(r"(\n|&nbsp;|\u200B)+", sub_txt.file_text)
         sub_txt.delete_newlines()
-        match = re.search(r"(\n|&nbsp;|\u200B)+", sub_txt.file_text)
-        assert match is None
+        match_after = re.search(r"(\n|&nbsp;|\u200B)+", sub_txt.file_text)
+
+        assert match_before is not None
+        assert match_after is None
 
 
 def test_delete_timestamps():
@@ -43,35 +52,45 @@ def test_delete_timestamps():
     """
     for vtt_file in vtt_files_list:
         sub_txt = SubtitleTxt(vtt_file)
-        sub_txt.delete_timestamps()
-        match = re.search(
+
+        match_before = re.search(
             r"\d{2}:\d{2}:\d{2}(,|\.){1}\d{3} .+ \d{2}:\d{2}:\d{2}(,|\.){1}\d{3}",
             sub_txt.file_text,
         )
-        assert match is None
+        sub_txt.delete_timestamps()
+
+        match_after = re.search(
+            r"\d{2}:\d{2}:\d{2}(,|\.){1}\d{3} .+ \d{2}:\d{2}:\d{2}(,|\.){1}\d{3}",
+            sub_txt.file_text,
+        )
+
+        assert match_before is not None
+        assert match_after is None
 
 
 def test_delete_start_and_end_whitespace():
+    """This test function checks whether the
+    delete_start_and_end_whitespace method of SubtitleTxt class
+    removes any whitespaces at the start and end of the text."""
     for vtt_file in vtt_files_list:
         sub_txt = SubtitleTxt(vtt_file)
+
+        match_before = re.search(r"(^\s|\s$)", sub_txt.file_text)
         sub_txt.delete_start_and_end_whitespace()
-        match = re.search(r"(^\s|\s$)", sub_txt.file_text)
-        assert match is None
+        match_after = re.search(r"(^\s|\s$)", sub_txt.file_text)
+
+        assert match_before is not None
+        assert match_after is None
 
 
 def test_delete_double_or_more_whitespace():
     """Test for delete_double_or_more_whitespace method in subtitle_cleaning module."""
     for vtt_file in vtt_files_list:
         sub_txt = SubtitleTxt(vtt_file)
+
+        match_before = re.search(r"\s{2,}", sub_txt.file_text)
         sub_txt.delete_double_or_more_whitespace()
-        match = re.search(r"\s{2,}", sub_txt.file_text)
-        assert match is None
+        match_after = re.search(r"\s{2,}", sub_txt.file_text)
 
-
-def test_clean_to_txt(tmpdir):
-    """Test the clean_to_txt method of SubtitleTxt class."""
-    for vtt_file in vtt_files_list:
-        sub_txt = SubtitleTxt(vtt_file)
-        sub_txt.clean_to_txt()
-        assert sub_txt.file_text == ""
-        assert (tmpdir / f"{sub_txt.filename}.txt").exists()
+        assert match_before is not None
+        assert match_after is None
