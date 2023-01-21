@@ -7,7 +7,7 @@ file is correctly created.
 """
 import re
 import glob
-from ytxt.lib.subtitle_cleaning import SubtitleTxt
+from src.ytxt.lib.subtitle_cleaning import SubtitleTxt
 
 
 vtt_files_list = glob.glob("*.vtt")
