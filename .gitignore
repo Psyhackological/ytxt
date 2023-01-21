@@ -136,3 +136,6 @@ dmypy.json
 
 # .directory file
 .directory
+
+# txt tests files
+!src/tests/*.txt
