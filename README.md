@@ -24,6 +24,8 @@
 - Easy customizable through flags. (for example easy to choose different subtitle languages)
 - Easy to use Command Line Interface thanks to argparse.
 
+See [samples folder](samples/) for understanding how it works.
+
 ## Requirements
 ### For installation
 [python-pip](https://pip.pypa.io/en/stable/) - pip is the package installer for Python. You can use it to install packages from the Python Package Index and other indexes.
@@ -41,7 +43,7 @@ Update dependencies (in the same folder with `pyproject.toml` and `poetry.lock`)
 poetry update
 ```
 
-For more commands check out [Python's Poetry Basic Usage](https://python-poetry.org/docs/basic-usage/).
+For more commands check out [Python Poetry's Basic Usage](https://python-poetry.org/docs/basic-usage/).
 
 ## Installation
 Locally:
@@ -84,7 +86,7 @@ options:
   -sl, --sub-langs      prints all available subtitles languages
 ```
 
-### List subtitles languages
+### List subtitles' languages
 Syntax
 ```bash
 ytxt -sl, --sub-langs [URL ...]
@@ -92,25 +94,78 @@ ytxt -sl, --sub-langs [URL ...]
 
 Example
 ```bash
-ytxt -sl https://youtu.be/I9hJ_Rux9y0
+ytxt -sl https://youtu.be/h6fcK_fRYaI
 ```
 
-Console output (shorten automatic caption)
+Console output (without automatic caption output)
 ```bash
 [youtube] Extracting URL: https://youtu.be/I9hJ_Rux9y0
 [youtube] I9hJ_Rux9y0: Downloading webpage
 [youtube] I9hJ_Rux9y0: Downloading android player API JSON
-[info] Available subtitles for I9hJ_Rux9y0:
+[info] Available subtitles for h6fcK_fRYaI:
 Language Name                     Formats
-zh-Hant  Chinese (Traditional)    vtt, ttml, srv3, srv2, srv1, json3
+ar       Arabic                   vtt, ttml, srv3, srv2, srv1, json3
+az       Azerbaijani              vtt, ttml, srv3, srv2, srv1, json3
+bn       Bangla                   vtt, ttml, srv3, srv2, srv1, json3
+be       Belarusian               vtt, ttml, srv3, srv2, srv1, json3
+bs       Bosnian                  vtt, ttml, srv3, srv2, srv1, json3
+bg       Bulgarian                vtt, ttml, srv3, srv2, srv1, json3
+my       Burmese                  vtt, ttml, srv3, srv2, srv1, json3
+ca       Catalan                  vtt, ttml, srv3, srv2, srv1, json3
+zh       Chinese                  vtt, ttml, srv3, srv2, srv1, json3
+zh-CN    Chinese (China)          vtt, ttml, srv3, srv2, srv1, json3
+zh-Hans  Chinese (Simplified)     vtt, ttml, srv3, srv2, srv1, json3
+zh-TW    Chinese (Taiwan)         vtt, ttml, srv3, srv2, srv1, json3
+hr       Croatian                 vtt, ttml, srv3, srv2, srv1, json3
+cs       Czech                    vtt, ttml, srv3, srv2, srv1, json3
+da       Danish                   vtt, ttml, srv3, srv2, srv1, json3
+nl       Dutch                    vtt, ttml, srv3, srv2, srv1, json3
 en-GB    English (United Kingdom) vtt, ttml, srv3, srv2, srv1, json3
+eo       Esperanto                vtt, ttml, srv3, srv2, srv1, json3
+et       Estonian                 vtt, ttml, srv3, srv2, srv1, json3
+fil      Filipino                 vtt, ttml, srv3, srv2, srv1, json3
+fi       Finnish                  vtt, ttml, srv3, srv2, srv1, json3
+fr       French                   vtt, ttml, srv3, srv2, srv1, json3
+fr-CA    French (Canada)          vtt, ttml, srv3, srv2, srv1, json3
+fr-FR    French (France)          vtt, ttml, srv3, srv2, srv1, json3
+ka       Georgian                 vtt, ttml, srv3, srv2, srv1, json3
+de       German                   vtt, ttml, srv3, srv2, srv1, json3
+el       Greek                    vtt, ttml, srv3, srv2, srv1, json3
 iw       Hebrew                   vtt, ttml, srv3, srv2, srv1, json3
+hi       Hindi                    vtt, ttml, srv3, srv2, srv1, json3
+hu       Hungarian                vtt, ttml, srv3, srv2, srv1, json3
+id       Indonesian               vtt, ttml, srv3, srv2, srv1, json3
 it       Italian                  vtt, ttml, srv3, srv2, srv1, json3
 ja       Japanese                 vtt, ttml, srv3, srv2, srv1, json3
+kk       Kazakh                   vtt, ttml, srv3, srv2, srv1, json3
 ko       Korean                   vtt, ttml, srv3, srv2, srv1, json3
+ku       Kurdish                  vtt, ttml, srv3, srv2, srv1, json3
+lv       Latvian                  vtt, ttml, srv3, srv2, srv1, json3
+lt       Lithuanian               vtt, ttml, srv3, srv2, srv1, json3
+ms       Malay                    vtt, ttml, srv3, srv2, srv1, json3
+mn       Mongolian                vtt, ttml, srv3, srv2, srv1, json3
+no       Norwegian                vtt, ttml, srv3, srv2, srv1, json3
+fa       Persian                  vtt, ttml, srv3, srv2, srv1, json3
+pl       Polish                   vtt, ttml, srv3, srv2, srv1, json3
+pt       Portuguese               vtt, ttml, srv3, srv2, srv1, json3
+pt-BR    Portuguese (Brazil)      vtt, ttml, srv3, srv2, srv1, json3
+pt-PT    Portuguese (Portugal)    vtt, ttml, srv3, srv2, srv1, json3
 ro       Romanian                 vtt, ttml, srv3, srv2, srv1, json3
+ru       Russian                  vtt, ttml, srv3, srv2, srv1, json3
+sr       Serbian                  vtt, ttml, srv3, srv2, srv1, json3
+sr-Latn  Serbian (Latin)          vtt, ttml, srv3, srv2, srv1, json3
+sk       Slovak                   vtt, ttml, srv3, srv2, srv1, json3
+sl       Slovenian                vtt, ttml, srv3, srv2, srv1, json3
+es       Spanish                  vtt, ttml, srv3, srv2, srv1, json3
+es-419   Spanish (Latin America)  vtt, ttml, srv3, srv2, srv1, json3
+es-MX    Spanish (Mexico)         vtt, ttml, srv3, srv2, srv1, json3
+es-ES    Spanish (Spain)          vtt, ttml, srv3, srv2, srv1, json3
+sv       Swedish                  vtt, ttml, srv3, srv2, srv1, json3
+ta       Tamil                    vtt, ttml, srv3, srv2, srv1, json3
 th       Thai                     vtt, ttml, srv3, srv2, srv1, json3
 tr       Turkish                  vtt, ttml, srv3, srv2, srv1, json3
+uz       Uzbek                    vtt, ttml, srv3, srv2, srv1, json3
+vi       Vietnamese               vtt, ttml, srv3, srv2, srv1, json3
 ```
 
 ### Basic usage
@@ -121,19 +176,19 @@ ytxt [URL ...]
 
 Example
 ```
-ytxt https://youtu.be/I9hJ_Rux9y0
+ytxt https://youtu.be/h6fcK_fRYaI
 ```
 
 Console output
 ```bash
-[youtube] Extracting URL: https://youtu.be/I9hJ_Rux9y0
-[youtube] I9hJ_Rux9y0: Downloading webpage
-[youtube] I9hJ_Rux9y0: Downloading android player API JSON
-[info] I9hJ_Rux9y0: Downloading subtitles: en-GB
-[info] I9hJ_Rux9y0: Downloading 1 format(s): 303+251
-[info] Writing video subtitles to: Why You Are Lonely and How to Make Friends [I9hJ_Rux9y0].en-GB.vtt
-[download] Destination: Why You Are Lonely and How to Make Friends [I9hJ_Rux9y0].en-GB.vtt
-[download] 100% of   18.64KiB in 00:00:00 at 148.37KiB/s
+[youtube] Extracting URL: https://youtu.be/h6fcK_fRYaI
+[youtube] h6fcK_fRYaI: Downloading webpage
+[youtube] h6fcK_fRYaI: Downloading android player API JSON
+[info] h6fcK_fRYaI: Downloading subtitles: en-GB
+[info] h6fcK_fRYaI: Downloading 1 format(s): 248+251
+[info] Writing video subtitles to: The Egg - A Short Story [h6fcK_fRYaI].en-GB.vtt
+[download] Destination: The Egg - A Short Story [h6fcK_fRYaI].en-GB.vtt
+[download] 100% of    9.44KiB in 00:00:00 at 83.42KiB/s
 Deleting subtitles heading...
 Done 1/5
 Deleting subtitles timestamps...
@@ -145,29 +200,73 @@ Done 4/5
 Deleting double or more whitespace...
 Done. 5/5
 Creating the txt file...
-Finished saving Why You Are Lonely and How to Make Friends [I9hJ_Rux9y0].en-GB.txt
+Finished saving The Egg - A Short Story [h6fcK_fRYaI].en-GB.txt
 ```
 
-And 2 files in your relative pathtoo:
+Also see 2 files saved in your relative path:
 ```bash
-Why You Are Lonely and How to Make Friends [I9hJ_Rux9y0].en-GB.txt
-Why You Are Lonely and How to Make Friends [I9hJ_Rux9y0].en-GB.vtt
+The Egg - A Short Story [h6fcK_fRYaI].en-GB.txt
+The Egg - A Short Story [h6fcK_fRYaI].en-GB.vtt
 ```
 
 ### Changing default languages
 Syntax
 ```bash
-ytxt -l LANG [LANG ...], --languages LANG [LANG ...]
+ytxt URL [URL ...] -l LANG [LANG ...], --languages LANG [LANG ...]
 ```
 
 Example
 ```bash
-ytxt -l pl de https://youtu.be/h6fcK_fRYaI
+ytxt https://youtu.be/h6fcK_fRYaI -l de pl
 ```
 
-Console output WIP
+Console output
 ```bash
+[youtube] Extracting URL: https://youtu.be/h6fcK_fRYaI
+[youtube] h6fcK_fRYaI: Downloading webpage
+[youtube] h6fcK_fRYaI: Downloading android player API JSON
+[info] h6fcK_fRYaI: Downloading subtitles: de, pl
+[info] h6fcK_fRYaI: Downloading 1 format(s): 248+251
+Deleting existing file The Egg - A Short Story [h6fcK_fRYaI].de.vtt
+[info] Writing video subtitles to: The Egg - A Short Story [h6fcK_fRYaI].de.vtt
+[download] Destination: The Egg - A Short Story [h6fcK_fRYaI].de.vtt
+[download] 100% of   11.30KiB in 00:00:00 at 98.05KiB/s
+Deleting existing file The Egg - A Short Story [h6fcK_fRYaI].pl.vtt
+[info] Writing video subtitles to: The Egg - A Short Story [h6fcK_fRYaI].pl.vtt
+[download] Destination: The Egg - A Short Story [h6fcK_fRYaI].pl.vtt
+[download] 100% of   10.02KiB in 00:00:00 at 85.40KiB/s
+Deleting subtitles heading...
+Done 1/5
+Deleting subtitles timestamps...
+Done 2/5
+Deleting subtitles newlines...
+Done 3/5
+Deleting start and end whitespace...
+Done 4/5
+Deleting double or more whitespace...
+Done. 5/5
+Creating the txt file...
+Finished saving The Egg - A Short Story [h6fcK_fRYaI].de.txt
+Deleting subtitles heading...
+Done 1/5
+Deleting subtitles timestamps...
+Done 2/5
+Deleting subtitles newlines...
+Done 3/5
+Deleting start and end whitespace...
+Done 4/5
+Deleting double or more whitespace...
+Done. 5/5
+Creating the txt file...
+Finished saving The Egg - A Short Story [h6fcK_fRYaI].pl.txt
+```
 
+Also see 4 files saved in your relative path:
+```bash
+The Egg - A Short Story [h6fcK_fRYaI].de.txt
+The Egg - A Short Story [h6fcK_fRYaI].de.vtt
+The Egg - A Short Story [h6fcK_fRYaI].pl.txt
+The Egg - A Short Story [h6fcK_fRYaI].pl.vtt
 ```
 
 ## Contributing
