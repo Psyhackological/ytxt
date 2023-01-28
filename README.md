@@ -6,7 +6,7 @@
   ytxt
 </h1>
 
-[![asciicast](https://asciinema.org/a/xYIdxPE00EmIqcMomiMhFE99E.png)](https://asciinema.org/a/xYIdxPE00EmIqcMomiMhFE99E?autoplay=1&loop=1)
+[![asciicast](https://asciinema.org/a/xYIdxPE00EmIqcMomiMhFE99E.svg)](https://asciinema.org/a/xYIdxPE00EmIqcMomiMhFE99E?autoplay=1&loop=1)
 
 <p align="center">
   This module downloads subtitles in .vtt file format then it opens it as a regular .txt file removes not needed stuff and in the end it saves to a clean looking .txt file with the same name.
