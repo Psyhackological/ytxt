@@ -3,7 +3,7 @@
 </p>
 
 <h1 align="center">
-  ytxt
+  YTXT
 </h1>
 
 ![asciinemagifgenerator](img/agg.gif)
@@ -83,14 +83,14 @@ Windows: `pip` / `ytxt` is not recognized as an internal or external command, op
 
 Solution for system's environment variable using admin privileges in PowerShell
 ```powershell
-[Environment]::SetEnvironmentVariable("Path", $env:Path + ";$HOME\AppData\Local\Programs\Python\Python311\Scripts", "Machine")
+[Environment]::SetEnvironmentVariable("Path", "$env:Path;$HOME\AppData\Local\Programs\Python\Python311\Scripts", "Machine")
 ```
 
 Where `Python311` is your version of Python.
 
 Solution for user's environment variable without admin privileges in PowerShell
 ```powershell
-[Environment]::SetEnvironmentVariable("INCLUDE", $env:INCLUDE + ";$HOME\AppData\Roaming\Python\Python311\Scripts", "User")
+[Environment]::SetEnvironmentVariable("Path", "$env:Path;$HOME\AppData\Roaming\Python\Python311\Scripts", "User")
 ```
 
 Where `Python311` is your version of Python.
