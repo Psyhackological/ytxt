@@ -21,7 +21,7 @@
 
 ## Features
 - Downloads .vtt subtitle files and saves it to a clean looking .txt file with the same name.
-- Easy customizable through flags. (for example easy to choose different subtitle languages)
+- Easy customizable through flags. (for example: easy to choose different subtitle languages)
 - Easy to use Command Line Interface thanks to argparse.
 
 See [samples folder](samples/) for understanding how it works.
@@ -38,21 +38,42 @@ Installing dependencies
 poetry install
 ```
 
+Installing dependencies
+```bash
+poetry install
+```
+
+Activating the virtual environment
+```bash
+poetry shell
+```
+
+Deactivating the virtual environment leaving the shell
+```bash
+exit
+```
+or `CTRL + D`
+
+
+Deactivate the virtual environment without leaving the shell
+```bash
+deactivate
+```
+
 Update dependencies (in the same folder with `pyproject.toml` and `poetry.lock`)
 ```bash
 poetry update
 ```
 
-For more commands check out [Python Poetry's Basic Usage](https://python-poetry.org/docs/basic-usage/).
+For more commands, check out [Python Poetry's Basic Usage](https://python-poetry.org/docs/basic-usage/).
 
 ## Installation
 Locally:
 ```bash
-pip install ytxt-0.1.0-py3-none-any.whl
+pip install ytxt-0.1.1-py3-none-any.whl
 ```
 From [PyPi](https://pypi.org/):
-
-`After fixing the -l / --languages bug.`
+`Incoming soon.`
 
 ## Troubleshooting
 pip not found
@@ -72,16 +93,16 @@ Example
 ytxt -h
 ```
 
-Output
+Console output
 ```bash
-usage: YTXT - YouTube Video to TXT [-h] [-l LANG [LANG ...]] [-sl] [URL ...]
+usage: YTXT - YouTube Video to TXT [-h] [-l [LANG ...]] [-sl] URL [URL ...]
 
 positional arguments:
   URL                   YouTube video URLs
 
 options:
   -h, --help            show this help message and exit
-  -l LANG [LANG ...], --languages LANG [LANG ...]
+  -l [LANG ...], --languages [LANG ...]
                         subtitles languages (default=['en', 'en-GB']) (list)
   -sl, --sub-langs      prints all available subtitles languages
 ```
@@ -89,12 +110,12 @@ options:
 ### List subtitles' languages
 Syntax
 ```bash
-ytxt -sl, --sub-langs [URL ...]
+ytxt URL [URL ...] -sl, --sub-langs
 ```
 
 Example
 ```bash
-ytxt -sl https://youtu.be/h6fcK_fRYaI
+ytxt https://youtu.be/h6fcK_fRYaI -sl
 ```
 
 Console output (without automatic caption output)
@@ -171,7 +192,7 @@ vi       Vietnamese               vtt, ttml, srv3, srv2, srv1, json3
 ### Basic usage
 Syntax
 ```
-ytxt [URL ...]
+ytxt URL [URL ...]
 ```
 
 Example
@@ -270,13 +291,10 @@ The Egg - A Short Story [h6fcK_fRYaI].pl.vtt
 ```
 
 ## Contributing
-Contributing guidelines work in progress, however I am already open for pull requests.
+Contributing guidelines work in progress.
+However I am already open for pull requests.
 
 ## License
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-with-text-136x68.png)](https://choosealicense.com/licenses/gpl-3.0/)
 
 Software licensed under the [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/).
-
-# TODO
-- Thumbnail for this repo
-- Settings for this repo
