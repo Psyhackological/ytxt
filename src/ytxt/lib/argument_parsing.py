@@ -51,8 +51,9 @@ def parse_args():
     )
 
     parser.add_argument(
-        "urls", nargs="+", type=str, help="YouTube video URLs", metavar="URL"
+        nargs="+", type=str, help="YouTube video URLs", metavar="URL", dest="urls"
     )
+
     return parser.parse_args()
 
 
