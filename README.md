@@ -9,11 +9,11 @@
 ![asciinemagifgenerator](img/agg.gif)
 
 <p align="center">
-  This module downloads subtitles in .vtt file format then it opens it as a regular .txt file removes not needed stuff and in the end it saves to a clean looking .txt file with the same name.
+  This module downloads subtitles in .vtt file format, then it opens it as a regular .txt file, removes unneeded stuff and finally saves it to a clean looking .txt file with the same name.
 </p>
 
-# Contents
-1. [Features](#features)
+# Table of contents
+1. [Main features](#main-features)
 2. [Requirements](#requirements)
 3. [Installation](#installation)
 4. [Troubleshooting](#troubleshooting)
@@ -21,12 +21,12 @@
 6. [Contributing](#contributing)
 7. [License](#license)
 
-## Features
-- Downloads .vtt subtitle files and saves it to a clean looking .txt file with the same name.
-- Easy customizable through flags. (for example: easy to choose different subtitle languages)
-- Easy to use Command Line Interface thanks to argparse.
+## Main features
+- Downloads .vtt subtitle files and saves them to a clean looking .txt file with the same name as the subtitle file.
+- Easy to customise using flags. (e.g. easy selection of different subtitle languages)
+- Easy to use command line interface thanks to argparse.
 
-See [samples folder](samples/) for understanding how it works.
+To understand how it works, see the [samples folder](samples/).
 
 ## Requirements
 ### For installation
@@ -56,7 +56,6 @@ exit
 ```
 or `CTRL + D`
 
-
 Deactivate the virtual environment without leaving the shell
 ```bash
 deactivate
@@ -67,7 +66,7 @@ Update dependencies (in the same folder with `pyproject.toml` and `poetry.lock`)
 poetry update
 ```
 
-For more commands, check out [Python Poetry's Basic Usage](https://python-poetry.org/docs/basic-usage/).
+For more commands, see [Python Poetry's Basic Usage](https://python-poetry.org/docs/basic-usage/).
 
 ## Installation
 Locally:
@@ -79,17 +78,17 @@ From [PyPi](https://pypi.org/):
 
 ## Troubleshooting
 Windows: `pip` / `ytxt` is not recognized as an internal or external command, operable program or batch file.
-1. Make sure that you installed python-pip and ytxt correctly.
-2. If so, then the problem lies within `Path` environment variable that is needed to see where Python's scripts are installed and how it can execute it.
+1. Make sure that you have installed python-pip and ytxt correctly.
+2. If so, then the problem lies in the `Path` environment variable, which is needed to see where Python's scripts are installed and how they can be run.
 
-Solution for system's environment variables using admin privileges
+Solution for system's environment variable using admin privileges in PowerShell
 ```powershell
 [Environment]::SetEnvironmentVariable("Path", $env:Path + ";$HOME\AppData\Local\Programs\Python\Python311\Scripts", "Machine")
 ```
 
 Where `Python311` is your version of Python.
 
-Solution for system's environment variables using admin privileges
+Solution for user's environment variable without admin privileges in PowerShell
 ```powershell
 [Environment]::SetEnvironmentVariable("INCLUDE", $env:INCLUDE + ";$HOME\AppData\Roaming\Python\Python311\Scripts", "User")
 ```
@@ -97,11 +96,7 @@ Solution for system's environment variables using admin privileges
 Where `Python311` is your version of Python.
 
 GNU/Linux / MacOS: bash: `pip` / `ytxt`: command not found
-1. Make sure that you installed python-pip and ytxt correctly.
-2. If so, then the problem lies within `Path` environment variable that is needed to see where Python's scripts are installed and how it can execute it.
-
-GNU/Linux / MacOS: bash: `ytxt`: command not found
-1. Make sure that you installed python-pip and ytxt correctly.
+1. Make sure that you have installed python-pip and ytxt correctly.
 2. If so, MacOS users are doomed and Linux users will figure it out.
 
 ## Usage with examples
@@ -248,7 +243,7 @@ Creating the txt file...
 Finished saving The Egg - A Short Story [h6fcK_fRYaI].en-GB.txt
 ```
 
-Also see 2 files saved in your relative path:
+See also the 2 files that are stored in your relative path:
 ```bash
 The Egg - A Short Story [h6fcK_fRYaI].en-GB.txt
 The Egg - A Short Story [h6fcK_fRYaI].en-GB.vtt
@@ -306,7 +301,7 @@ Creating the txt file...
 Finished saving The Egg - A Short Story [h6fcK_fRYaI].pl.txt
 ```
 
-Also see 4 files saved in your relative path:
+See also the 4 files that are stored in your relative path:
 ```bash
 The Egg - A Short Story [h6fcK_fRYaI].de.txt
 The Egg - A Short Story [h6fcK_fRYaI].de.vtt
@@ -315,8 +310,8 @@ The Egg - A Short Story [h6fcK_fRYaI].pl.vtt
 ```
 
 ## Contributing
-Contributing guidelines work in progress.
-However I am already open for pull requests.
+Contribution guidelines are under development.
+However, I am already open for pull requests.
 
 ## License
 [![GNU GPLv3 Image](https://www.gnu.org/graphics/gplv3-with-text-136x68.png)](https://choosealicense.com/licenses/gpl-3.0/)
