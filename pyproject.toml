@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "ytxt"
-version = "0.1.0"
+version = "0.1.1"
 description = "This module downloads subtitles in .vtt file format then it opens it as a regular .txt file removes not needed stuff and in the end it saves to a clean looking .txt file with the same name." 
 authors = ["Psyhackological <konradkon@duck.com>"]
 license = "GPL-3.0"
