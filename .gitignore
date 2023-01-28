@@ -128,18 +128,5 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# vtt file
-*.vtt
-
-# txt file
-*.txt
-
 # .directory file
 .directory
-
-# txt tests files
-!src/tests/*.vtt
-
-# sample folder files
-!./*.txt
-!./*.vtt
