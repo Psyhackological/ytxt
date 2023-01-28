@@ -6,11 +6,10 @@ languages or downloads specified subtitle.
 """
 import sys
 import yt_dlp
-from .argument_parsing import args
 
 
 # ydl_opts: https://github.com/yt-dlp/yt-dlp/blob/master/yt_dlp/YoutubeDL.py#L180
-def show_subs_langs():
+def show_subs_langs(args):
     """Shows all of the available subtitles to choose."""
     ydl_opts = {
         "listsubtitles": True,
@@ -25,7 +24,7 @@ def show_subs_langs():
             sys.exit()
 
 
-def download_vtt_file():
+def download_vtt_file(args):
     """Downloads the .vtt file with chosen subtitles languages."""
     ydl_opts = {
         "skip_download": True,
