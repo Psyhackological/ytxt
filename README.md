@@ -75,12 +75,34 @@ Locally:
 pip install ytxt-0.1.1-py3-none-any.whl
 ```
 From [PyPi](https://pypi.org/):
-`Incoming soon.`
+`Coming soon!`
 
 ## Troubleshooting
-pip not found
+Windows: `pip` / `ytxt` is not recognized as an internal or external command, operable program or batch file.
+1. Make sure that you installed python-pip and ytxt correctly.
+2. If so, then the problem lies within `Path` environment variable that is needed to see where Python's scripts are installed and how it can execute it.
 
-Windows does not recognize ytxt
+Solution for system's environment variables using admin privileges
+```powershell
+[Environment]::SetEnvironmentVariable("Path", $env:Path + ";$HOME\AppData\Local\Programs\Python\Python311\Scripts", "Machine")
+```
+
+Where `Python311` is your version of Python.
+
+Solution for system's environment variables using admin privileges
+```powershell
+[Environment]::SetEnvironmentVariable("INCLUDE", $env:INCLUDE + ";$HOME\AppData\Roaming\Python\Python311\Scripts", "User")
+```
+
+Where `Python311` is your version of Python.
+
+GNU/Linux / MacOS: bash: `pip` / `ytxt`: command not found
+1. Make sure that you installed python-pip and ytxt correctly.
+2. If so, then the problem lies within `Path` environment variable that is needed to see where Python's scripts are installed and how it can execute it.
+
+GNU/Linux / MacOS: bash: `ytxt`: command not found
+1. Make sure that you installed python-pip and ytxt correctly.
+2. If so, MacOS users are doomed and Linux users will figure it out.
 
 ## Usage with examples
 
